@@ -1,0 +1,9 @@
+REPORT
+
+INSERT|1|Bob Roberts|42|35040.00
+
+REPORT
+
+INSERT|2|Maxwell Smart|37|21000.00
+
+REPORT

@@ -1,0 +1,150 @@
+ID    	Customer Name       
+		Trait     	Value       
+11111 	BOB WIRE            
+		GENDER    	M           
+		EXERCISE  	BIKE        
+		EXERCISE  	HIKE        
+		SMOKING   	N           
+22222 	MELBA TOAST         
+		GENDER    	F           
+		BOOK      	COOKING     
+33333 	CRYSTAL BALL        
+		SMOKING   	N           
+		GENDER    	F           
+		EXERCISE  	JOG         
+		EXERCISE  	YOGA        
+33355 	TED E BARR          
+		MOVIE     	ACTION      
+		GENDER    	M           
+		MOVIE     	HORROR      
+		EXERCISE  	HIKE        
+33366 	REED BOOK           
+		BOOK      	SCIFI       
+		BOOK      	DRAMA       
+		BOOK      	MYSTERY     
+		BOOK      	HORROR      
+		BOOK      	TRAVEL      
+		BOOK      	ROMANCE     
+11122 	AVA KASHUN          
+		BOOK      	TRAVEL      
+		MOVIE     	ACTION      
+		EXERCISE  	HIKE        
+		EXERCISE  	BIKE        
+		EXERCISE  	RUN         
+		EXERCISE  	GOLF        
+		EXERCISE  	JOG         
+		EXERCISE  	DANCE       
+		MOVIE     	ROMANCE     
+		SMOKING   	N           
+		GENDER    	F           
+111000	ROCK D BOAT         
+111010	JIMMY LOCK          
+		GENDER    	M           
+		BOOK      	TRAVEL      
+		MOVIE     	ACTION      
+555111	SPRING WATER        
+		EXERCISE  	SWIM        
+		GENDER    	F           
+		SMOKING   	N           
+666666	E VILLE             
+		SMOKING   	Y           
+		GENDER    	M           
+		EXERCISE  	BIKE        
+		MOVIE     	HORROR      
+		BOOK      	HORROR      
+
+Query # 1: SMOKING = N
+	SMOKING N = 
+	Query Result:
+	ID      Customer Name       
+	11111   BOB WIRE            
+	33333   CRYSTAL BALL        
+	11122   AVA KASHUN          
+	555111  SPRING WATER        
+Query # 2: SMOKING = N AND GENDER = F 
+	SMOKING N = GENDER F = 
+	AND 
+	Query Result:
+	ID      Customer Name       
+	33333   CRYSTAL BALL        
+	11122   AVA KASHUN          
+	555111  SPRING WATER        
+Query # 3: SMOKING = N AND ( EXERCISE = HIKE OR EXERCISE = BIKE )
+	SMOKING N = EXERCISE HIKE = 
+	EXERCISE BIKE = OR AND 
+	Query Result:
+	ID      Customer Name       
+	11111   BOB WIRE            
+	11122   AVA KASHUN          
+Query # 4: GENDER = F AND EXERCISE NOTANY YOGA
+	GENDER F = EXERCISE YOGA NOTANY 
+	AND 
+	Query Result:
+	ID      Customer Name       
+	22222   MELBA TOAST         
+	11122   AVA KASHUN          
+	555111  SPRING WATER        
+Query # 5: SMOKING = N AND EXERCISE = HIKE OR EXERCISE = BIKE
+	SMOKING N = EXERCISE HIKE = 
+	AND EXERCISE BIKE = OR 
+	Query Result:
+	ID      Customer Name       
+	11111   BOB WIRE            
+	11122   AVA KASHUN          
+	666666  E VILLE             
+Query # 6: ( BOOK = SCIFI )
+	BOOK SCIFI = 
+	Query Result:
+	ID      Customer Name       
+	33366   REED BOOK           
+Query # 7: BOOK = TRAVEL
+	BOOK TRAVEL = 
+	Query Result:
+	ID      Customer Name       
+	33366   REED BOOK           
+	11122   AVA KASHUN          
+	111010  JIMMY LOCK          
+Query # 8: BOOK NOTANY TRAVEL
+	BOOK TRAVEL NOTANY 
+	Query Result:
+	ID      Customer Name       
+	11111   BOB WIRE            
+	22222   MELBA TOAST         
+	33333   CRYSTAL BALL        
+	33355   TED E BARR          
+	111000  ROCK D BOAT         
+	555111  SPRING WATER        
+	666666  E VILLE             
+Query # 9: ( ( ( BOOK ONLY TRAVEL ) ) )
+	BOOK TRAVEL ONLY 
+	Query Result:
+	ID      Customer Name       
+	11122   AVA KASHUN          
+	111010  JIMMY LOCK          
+Query # 10: ( ( SMOKING = N )
+	Warning: missing right parenthesis
+Query # 11: ( ( SMOKING = N ) AND ( BOOK ONLY TRAVEL ) AND ( EXERCISE = HIKE ) )
+	SMOKING N = BOOK TRAVEL ONLY 
+	AND EXERCISE HIKE = AND 
+	Query Result:
+	ID      Customer Name       
+	11122   AVA KASHUN          
+Query # 12: ( GENDER = M ) AND EXERCISE = BIKE )
+	Warning: missing left parenthesis
+Query # 13: SMOKING AND ( GENDER = F )
+	SMOKING GENDER F = AND 
+	Warning: not enough operands in query
+	Query Result:
+	ID      Customer Name       
+Query # 14: SMOKING = N AND GENDER =
+	SMOKING N = GENDER = AND 
+	
+	Warning: not enough operands in query
+	Query Result:
+	ID      Customer Name       
+Query # 15: SMOKING GENDER = F
+	SMOKING GENDER F = 
+	Warning: too many operands in query
+	Query Result:
+	ID      Customer Name       
+
