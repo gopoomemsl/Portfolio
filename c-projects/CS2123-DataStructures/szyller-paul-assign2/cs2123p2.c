@@ -11,13 +11,13 @@ Input:
     The input comes from the cs2123p2Driver.c file and is described in said file.
 Results:
     -Prints the customer infos from a Customer array.
-    -Converts a infix querry to postfix notation.
-    -Evaluate a postfix querry and returns the results in a boolean array.
+    -Converts a infix query to postfix notation.
+    -Evaluate a postfix query and returns the results in a boolean array.
 Returns:
     The returns of the program are handled in cs2123p1Driver.c where the main function 
     is and are described there.
 Notes:
-    This program only contains the functions requiered for the
+    This program only contains the functions required for the
     project 2 assignment. Most of the code is actually contained in cs2123p2Driver.c
     and cs2123p2.h, both created by Larry Clark.
 *******************************************************************************/
@@ -34,7 +34,7 @@ cs2123p2.h
 Purpose: 
     Header file for this program.
 Notes:
-    This is one of the four files provided by Dr. Clark for the project 2 assignment,
+    This is one of the four files provided by Professor Clark for the project 2 assignment,
     the other three provided files being cs2123p2Driver.c, and the two input files 
     p2customer.txt and p2query.txt
 *******************************************************************************/
@@ -42,12 +42,14 @@ Notes:
 
 
 /*** Warning constants ***/
+
 #define WARN_NOT_ENOUGH_OPER 803
 #define WARN_TOO_MANY_OPER 804
 
 
 
 /*** Prototypes for additional functions ***/
+
 //Program 1
 void convertSubTaskOperand(Out out, Element *pElement);
 void convertSubTaskOperator(Stack stack, Out out, Element *pElement);
@@ -66,7 +68,7 @@ void warningExit(int iWarningCode, QueryResult resultM[], Stack stack);
 
 /*** Functions ***/
 
-/********************printCustomerData*****************************************
+/******************** printCustomerData ***************************************
 void printCustomerData(Customer customerM[], int iNumCustomer)
 Purpose:
     Prints a formated version of the customerM[] array.
@@ -164,7 +166,7 @@ int convertToPostFix(char *pszInfix, Out out)
     return 0; //return success
 }
 
-/*******************************************************************************
+/************************** convertSubTaskOperand *******************************
 void convertSubTaskOperand(Out out, Element *pElement)
 Purpose:
     This function handles the case of an operand token.
@@ -183,7 +185,7 @@ void convertSubTaskOperand(Out out, Element *pElement)
     addOut(out, *pElement);
 }
 
-/*******************************************************************************
+/************************ convertSubTaskOperator *******************************
 void convertSubTaskOperator(Stack stack, Out out, Element *pElement)
 Purpose:
     This function handles the case of an operator token.
@@ -211,7 +213,7 @@ void convertSubTaskOperator(Stack stack, Out out, Element *pElement)
     push(stack, *pElement);
 }
 
-/*******************************************************************************
+/************************* convertSubTaskLParen ********************************
 void convertSubTaskLParen(Stack stack, Element *pElement)
 Purpose:
     This function handles the case of a left parenthesis token.
@@ -230,7 +232,7 @@ void convertSubTaskLParen(Stack stack, Element *pElement)
     push(stack, *pElement);
 }
 
-/*******************************************************************************
+/************************** convertSubTaskRParen *******************************
 int convertSubTaskRParen(Stack stack, Out out)
 Purpose:
     This function handles the case of a right parenthesis token.
@@ -260,7 +262,7 @@ int convertSubTaskRParen(Stack stack, Out out)
     pop(stack); //POP and get rid of (
 }
 
-/*******************************************************************************
+/*********************** convertSubTaskRemainingStack **************************
 int convertSubTaskRemainingStack(Stack stack, Out out)
 Purpose:
     This function handles the rest of the stack once we've gone through 
